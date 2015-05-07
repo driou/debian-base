@@ -22,4 +22,4 @@ RUN apt-get install -y curl \
 		tcpdump \
 		iotop \
 		strace
-
+RUN apt-get install -y ipcalc
