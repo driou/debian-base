@@ -21,5 +21,5 @@ RUN apt-get install -y curl \
 		htop \
 		tcpdump \
 		iotop \
-		strace
-RUN apt-get install -y ipcalc
+		strace \
+        ipcalc
