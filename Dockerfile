@@ -13,18 +13,24 @@ RUN apt-get update \
        build-essential curl wget vim git htop nmap tcpdump iotop strace ipcalc zsh \
 # Required for Ansible
        libffi-dev libssl-dev python-pip python-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
-    && apt-get clean
 
 # Install Oh-My-Zsh
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
-# Set ZSH Config to use Oh-My-Zsh
-COPY zshrc /root/.zshrc
+# Install SSH Client + SSHPass
+RUN apt-get update \ 
+    && apt-get install -y --no-install-recomments \
+       openssh-client sshpass
 
 # Install Ansible via PIP packages
 RUN pip install ansible cryptography
-# 
-# 
+ 
+# Set ZSH Config to use Oh-My-Zsh
+COPY zshrc /root/.zshrc
+
+# Clean APT
+RUN rm -rf /var/lib/apt/lists/* \
+    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
+    && apt-get clean
+#
 WORKDIR /data
