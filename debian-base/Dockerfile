@@ -9,7 +9,7 @@ COPY sources.list /etc/apt/sources.list
 # General Tools
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-	build-essential apt-utils curl wget vim git htop nmap tcpdump iotop strace ipcalc zsh 
+	build-essential dnsutils apt-utils curl wget vim git htop nmap tcpdump iotop strace ipcalc zsh 
 
 # Install Zsh 
 RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh 
