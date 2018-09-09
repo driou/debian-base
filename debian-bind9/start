@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Starting named..."
+chmod -R 775 /etc/bind
+chown -R root:bind /etc/bind
+chmod -R 775 /var/log/named
+chown -R root:bind /var/log/named
+mkdir -m 0775 -p /var/run/named
+chown root:bind /var/run/named
+touch /var/log/query.log
+chown bind /var/log/query.log
+named-checkconf
+exec /usr/sbin/named -u bind -f
+
