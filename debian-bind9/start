@@ -3,6 +3,7 @@
 echo "Starting named..."
 chmod -R 775 /etc/bind
 chown -R root:bind /etc/bind
+mkdir /var/log/named
 chmod -R 775 /var/log/named
 chown -R root:bind /var/log/named
 mkdir -m 0775 -p /var/run/named
