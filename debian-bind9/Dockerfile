@@ -16,7 +16,7 @@ EXPOSE 53/udp
 EXPOSE 53    
 EXPOSE 953
 
-ADD /start
+ADD start /start
 RUN chmod 755 /start
 
 CMD ["/start"]
